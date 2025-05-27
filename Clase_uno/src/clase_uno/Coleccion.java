@@ -27,6 +27,7 @@ public class Coleccion {
 		listaFiguras.get(posicion).subirPrecio(cantidad);
 
 	}
+	
 	@Override
 	public String toString() {
 		String lista = "";
@@ -37,11 +38,46 @@ public class Coleccion {
 		return "Coleccion = Lista de Figuras: " + lista;
 	}
 
+	public String conCapa() {
+		String conCapa = "";
+		for(Figura f : listaFiguras) {
+			if(f.getPersonaje().isCapa()) {
+				conCapa += f.toString();
+				conCapa += " | ";
+			}
+		}
+		return conCapa;
 
-
-
-
-
+	}
+	
+	
+	public Figura masValiosa() {
+		Figura masValiosa = listaFiguras.get(0);
+		for(Figura f : listaFiguras) {
+			if(f.getPrecio() > masValiosa.getPrecio()) {
+				masValiosa = f;
+			}
+		}
+		return masValiosa;
+	}
+	
+	public double valorColeccion() {
+		double precioTotal = 0;
+		for(Figura f :listaFiguras) {
+			precioTotal += f.getPrecio();
+		}
+		return precioTotal;
+	}
+	
+	
+	public double volumenTotal() {
+		double volumenAprox = 0;
+		for(Figura f : listaFiguras) {
+			volumenAprox += f.getDimensiones().getVolumen();
+		}
+		return volumenAprox + 200;
+	}
+	
 
 }
 	
